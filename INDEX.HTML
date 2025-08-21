@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Authentication System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: border 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: #007BFF;
+    }
+
+    button {
+      width: 100%;
+      background: #007BFF;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    #securePage {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #e8ffe8;
+      border: 1px solid #6c6;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      input, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <div class="error" id="registerError"></div>
+    <input type="text" id="registerUsername" placeholder="Username">
+    <div class="password-field">
+      <input type="password" id="registerPassword" placeholder="Password">
+      <button type="button" class="toggle-password" onclick="togglePassword('registerPassword', this)">   Show    </button>
+    </div>
+    <button onclick="register()">Register</button>
+    <br>
+    <br>
+
+    <h2>Login</h2>
+    <div class="error" id="loginError"></div>
+    <input type="text" id="loginUsername" placeholder="Username">
+    <div class="password-field">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button type="button" class="toggle-password" onclick="togglePassword('loginPassword', this)">Show</button>
+    </div>
+    <button onclick="login()">Login</button>
+
+    <div id="securePage">
+      <h3>Welcome to the secured page! 🎉</h3>
+      <p>You have successfully logged in.</p>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "Hide";
+      } else {
+        input.type = "password";
+        btn.textContent = "Show";
+      }
+    }
+  </script>
+</body>
+</html>
+
